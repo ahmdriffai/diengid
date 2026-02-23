@@ -1,0 +1,73 @@
+import { Camera, Car, Coffee, Home, Mountain, Tent } from 'lucide-react';
+
+export const categories = [
+    { label: 'Homestay', icon: Home },
+    { label: 'Jeep Tour', icon: Car },
+    { label: 'Camping', icon: Tent },
+    { label: 'Wisata', icon: Mountain },
+    { label: 'Kuliner', icon: Coffee },
+    { label: 'Fotografi', icon: Camera },
+];
+
+export const listings = [
+    {
+        id: 1,
+        title: 'Homestay Cahaya Sikunir',
+        category: 'Homestay',
+        location: 'Sembungan, Dieng',
+        price: 350000,
+        rating: 4.8,
+        image: 'https://images.unsplash.com/photo-1723810742992-0e84241abcf5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3p5JTIwd29vZGVuJTIwY2FiaW4lMjBpbnRlcmlvciUyMGhvbWVzdGF5fGVufDF8fHx8MTc3MDk3MTUxNHww&ixlib=rb-4.1.0&q=80&w=1080',
+        description: 'Homestay nyaman dengan pemandangan sunrise terbaik di desa tertinggi Pulau Jawa.',
+    },
+    {
+        id: 2,
+        title: 'Jeep Adventure Kawah Sikidang',
+        category: 'Jeep Tour',
+        location: 'Dieng Kulon',
+        price: 750000,
+        rating: 4.9,
+        image: 'https://images.unsplash.com/photo-1765519333785-892ba0e85e91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvZmZyb2FkJTIwamVlcCUyMGFkdmVudHVyZSUyMG11ZGR5JTIwZm9yZXN0fGVufDF8fHx8MTc3MDk3MTUxNHww&ixlib=rb-4.1.0&q=80&w=1080',
+        description: 'Paket wisata jeep keliling Kawah Sikidang dan Candi Arjuna. Maksimal 4 orang.',
+    },
+    {
+        id: 3,
+        title: 'Glamping Telaga Warna',
+        category: 'Camping',
+        location: 'Telaga Warna, Dieng',
+        price: 500000,
+        rating: 4.7,
+        image: 'https://images.unsplash.com/photo-1715529023436-ad8c4a4f202e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnbGFtcGluZyUyMHRlbnQlMjBuYXR1cmUlMjBmb3Jlc3R8ZW58MXx8fHwxNzcwODk3NzUwfDA&ixlib=rb-4.1.0&q=80&w=1080',
+        description: 'Rasakan sensasi menginap di tepi danau dengan fasilitas lengkap dan api unggun.',
+    },
+    {
+        id: 4,
+        title: 'Villa Puncak Dieng',
+        category: 'Homestay',
+        location: 'Dieng Wetan',
+        price: 1200000,
+        rating: 4.9,
+        image: 'https://images.unsplash.com/photo-1644496629469-a0355eeac153?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxEaWVuZyUyMFBsYXRlYXUlMjBtb3VudGFpbnMlMjBsYW5kc2NhcGUlMjBtaXN0eXxlbnwxfHx8fDE3NzA5NzE1MTR8MA&ixlib=rb-4.1.0&q=80&w=1080',
+        description: 'Villa keluarga kapasitas besar dengan air panas dan dapur lengkap.',
+    },
+    {
+        id: 5,
+        title: 'Sunrise Jeep Trip Sikunir',
+        category: 'Jeep Tour',
+        location: 'Bukit Sikunir',
+        price: 850000,
+        rating: 5.0,
+        image: 'https://images.unsplash.com/photo-1585308057198-67070eb477d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdW5yaXNlJTIwbW91bnRhaW4lMjB2aWV3JTIwY2xvdWRzJTIwZ29sZGVuJTIwaG91cnxlbnwxfHx8fDE3NzA5NzE1MTV8MA&ixlib=rb-4.1.0&q=80&w=1080',
+        description: 'Berburu golden sunrise di Bukit Sikunir tanpa lelah mendaki, diantar jeep sampai pos 1.',
+    },
+    {
+        id: 6,
+        title: 'Kawah Sikidang Experience',
+        category: 'Wisata',
+        location: 'Kawah Sikidang',
+        price: 25000,
+        rating: 4.5,
+        image: 'https://images.unsplash.com/photo-1729627271922-9e5e1cb81b2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2b2xjYW5pYyUyMGNyYXRlciUyMHN1bGZ1ciUyMHNtb2tlJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc3MDk3MTUxNXww&ixlib=rb-4.1.0&q=80&w=1080',
+        description: 'Tiket masuk wisata kawah aktif yang unik dan instagramable.',
+    },
+];
