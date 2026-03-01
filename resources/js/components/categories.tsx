@@ -7,7 +7,7 @@ interface CategoriesProps {
 
 export function Categories({ selectedCategory, onSelectCategory }: CategoriesProps) {
     return (
-        <div className="bg-white pb-4 shadow-sm md:pt-24">
+        <div className="bg-white pb-4 shadow-sm md:pt-10">
             <div className="container mx-auto px-4 md:px-10">
                 <div className="no-scrollbar flex items-center gap-8 overflow-x-auto pb-2">
                     {categories.map((cat, index) => (

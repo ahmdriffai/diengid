@@ -4,9 +4,9 @@ import { BookingModal } from '@/components/booking-modal';
 import { Categories } from '@/components/categories';
 import { Hero } from '@/components/hero';
 import { ListingCard } from '@/components/listing-card';
-import { PromoSection } from '@/components/promo-section';
 import { WhyChooseUs } from '@/components/why-choose-us';
 import { listings } from '@/lib/data';
+import { router } from '@inertiajs/react';
 import { Map } from 'lucide-react';
 import { useState } from 'react';
 import Layout from './layouts';
@@ -22,11 +22,10 @@ export default function Welcome() {
     return (
         <Layout>
             <Hero />
-            <WhyChooseUs />
-            <PromoSection />
+            {/* <PromoSection /> */}
 
             <Categories selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />
-            <div className="container mx-auto mt-6 min-h-125 px-4 md:px-10">
+            <div className="container mx-auto mt-6 min-h-125 px-4 pb-20 md:px-10">
                 {filteredListings.length === 0 ? (
                     <div className="flex flex-col items-center justify-center py-20 text-center">
                         <div className="mb-2 text-2xl font-semibold">Belum ada listing untuk kategori ini</div>
@@ -41,7 +40,7 @@ export default function Welcome() {
                 ) : (
                     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                         {filteredListings.map((listing) => (
-                            <div key={listing.id} onClick={() => setSelectedListing(listing)}>
+                            <div key={listing.id} onClick={() => router.visit(`/homestays/id`)}>
                                 <ListingCard listing={listing} />
                             </div>
                         ))}
@@ -57,6 +56,7 @@ export default function Welcome() {
                     Peta
                 </button>
             </div>
+            <WhyChooseUs />
         </Layout>
     );
 }

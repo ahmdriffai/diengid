@@ -24,14 +24,15 @@ export function Navbar() {
             >
                 <div className="container mx-auto flex items-center justify-between px-4 md:px-8">
                     {/* Logo */}
-                    <div className="z-50 flex cursor-pointer items-center gap-2">
+                    {/* <div className="z-50 flex cursor-pointer items-center gap-2">
                         <div
                             className={`flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600 text-xl font-bold text-white shadow-lg transition-colors`}
                         >
                             D
                         </div>
                         <span className="text-2xl font-bold tracking-tighter text-emerald-900 drop-shadow-sm">dieng.id</span>
-                    </div>
+                    </div> */}
+                    <img src="/logo.png" alt="dieng.id" className="h-14 w-auto" />
 
                     {/* Center Navigation - Desktop */}
                     <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">

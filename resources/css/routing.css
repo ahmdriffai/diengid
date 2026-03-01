@@ -1,0 +1,38 @@
+/* Container panel */
+.leaflet-routing-container {
+    width: 320px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    padding: 16px;
+    font-family: system-ui, sans-serif;
+    border: none;
+}
+
+/* Title */
+.leaflet-routing-container h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* List */
+.leaflet-routing-alt {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Instruction item */
+.leaflet-routing-alt tr {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.leaflet-routing-alt tr:hover {
+    background-color: #f9fafb;
+}
+
+/* Distance text */
+.leaflet-routing-distance {
+    color: #6b7280;
+    font-size: 12px;
+}

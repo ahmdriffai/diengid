@@ -26,7 +26,7 @@ export function PromoSection() {
     ];
 
     return (
-        <section className="bg-white py-16">
+        <section className="bg-white py-2">
             <div className="container mx-auto px-4 md:px-10">
                 <div className="mb-8 flex items-end justify-between">
                     <div>
