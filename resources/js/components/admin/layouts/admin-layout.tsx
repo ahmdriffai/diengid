@@ -2,86 +2,124 @@
 import { BadgeCheck, Bell, CalendarClock, CreditCard, Home, LogOut, Settings, Sparkles, TentTree } from 'lucide-react';
 import type React from 'react';
 
+type AdminNavItem = {
+    title: string;
+    url: string;
+    icon?: LucideIcon;
+    items?: {
+        title: string;
+        url: string;
+    }[];
+};
+
+const defaultNavigation: AdminNavItem[] = [
+    {
+        title: 'Dashboard',
+        url: '/admin',
+        icon: Home,
+    },
+    {
+        title: 'Tour Management',
+        url: '#',
+        icon: TentTree,
+        items: [
+            {
+                title: 'Daftar Tour',
+                url: '/admin/tours',
+            },
+            {
+                title: 'Kategori Tour',
+                url: '/admin/tour-categories',
+            },
+        ],
+    },
+    {
+        title: 'Booking Management',
+        url: '#',
+        icon: CalendarClock,
+        items: [
+            {
+                title: 'Semua Booking',
+                url: '/admin/bookings',
+            },
+            {
+                title: 'Pembayaran',
+                url: '/admin/payments',
+            },
+        ],
+    },
+    {
+        title: 'Jeep Management',
+        url: '#',
+        icon: CreditCard,
+        items: [
+            {
+                title: 'Data Jeep',
+                url: '/admin/jeeps',
+            },
+            {
+                title: 'Driver Jeep',
+                url: '/admin/jeep-drivers',
+            },
+        ],
+    },
+    {
+        title: 'Property Management',
+        url: '#',
+        icon: BadgeCheck,
+        items: [
+            {
+                title: 'Data Property',
+                url: '/admin/properties',
+            },
+            {
+                title: 'Host Homestay',
+                url: '/admin/hosts',
+            },
+        ],
+    },
+    {
+        title: 'Wisata Management',
+        url: '#',
+        icon: Sparkles,
+        items: [
+            {
+                title: 'Destinasi Wisata',
+                url: '/admin/wisata',
+            },
+            {
+                title: 'Kategori Wisata',
+                url: '/admin/wisata-categories',
+            },
+        ],
+    },
+    {
+        title: 'Kuliner Wisata',
+        url: '/admin/kuliner-wisata',
+        icon: Bell,
+    },
+    {
+        title: 'Pengaturan',
+        url: '/admin/settings',
+        icon: Settings,
+    },
+];
+
 const data = {
     user: {
         name: 'shadcn',
         email: 'm@example.com',
         avatar: '/avatars/shadcn.jpg',
     },
-    navMain: [
-        {
-            title: 'Dashboard',
-            url: '/admin',
-            icon: Home,
-        },
-        {
-            title: 'Kelola Homestay',
-            url: '#',
-            icon: TentTree,
-            items: [
-                {
-                    title: 'Divisi',
-                    url: '#',
-                },
-                {
-                    title: 'Jabatan',
-                    url: '/positions',
-                },
-                {
-                    title: 'Data Karyawan',
-                    url: '/employees',
-                },
-                {
-                    title: 'Lokasi Kehadiran',
-                    url: '#',
-                },
-                {
-                    title: 'Jadwal Hari Kerja',
-                    url: '#',
-                },
-                {
-                    title: 'Jadwal Shift',
-                    url: '#',
-                },
-                {
-                    title: 'Sanksi / Peringatan',
-                    url: '/employee-sanctions',
-                },
-            ],
-        },
-        {
-            title: 'Kehadiran',
-            url: '#',
-            icon: CalendarClock,
-            items: [
-                {
-                    title: 'Divisi',
-                    url: '#',
-                },
-                {
-                    title: 'Jabatan',
-                    url: '#',
-                },
-            ],
-        },
-        {
-            title: 'Pengaturan',
-            url: '#',
-            icon: Settings,
-            items: [
-                {
-                    title: 'Perusahaan',
-                    url: '#',
-                },
-            ],
-        },
-    ],
+    navMain: defaultNavigation,
 };
 
-interface Props {
+interface AdminLayoutProps {
     children: ReactNode;
+    title?: string;
+    navigation?: AdminNavItem[];
 }
-export default function DashboardLayout({ children }: Props): React.ReactNode {
+export default function AdminLayout({ children, title = 'Admin Dashboard', navigation = data.navMain }: AdminLayoutProps): React.ReactNode {
     return (
         <SidebarProvider
             style={
@@ -91,9 +129,9 @@ export default function DashboardLayout({ children }: Props): React.ReactNode {
                 } as React.CSSProperties
             }
         >
-            <AppSidebar variant="inset" />
+            <AppSidebar navItems={navigation} variant="inset" />
             <SidebarInset>
-                <SiteHeader />
+                <SiteHeader title={title} />
                 <div className="flex flex-1 flex-col">
                     <div className="@container/main flex flex-1 flex-col gap-2">
                         <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
@@ -120,7 +158,9 @@ export default function DashboardLayout({ children }: Props): React.ReactNode {
     );
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export const DashboardLayout = AdminLayout;
+
+export function AppSidebar({ navItems = data.navMain, ...props }: React.ComponentProps<typeof Sidebar> & { navItems?: AdminNavItem[] }) {
     return (
         <Sidebar collapsible="icon" {...props}>
             <SidebarHeader>
@@ -141,7 +181,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </SidebarMenu>
             </SidebarHeader>
             <SidebarContent>
-                <NavMain items={data.navMain} />
+                <NavMain items={navItems} />
             </SidebarContent>
         </Sidebar>
     );
@@ -256,7 +296,7 @@ import { Toaster } from '@/components/ui/sonner';
 import type { ReactNode } from 'react';
 import { ModeToggle } from '../mode-toogle';
 
-export function SiteHeader() {
+export function SiteHeader({ title = 'Admin Dashboard' }: { title?: string }) {
     const user: { name: string; email: string; avatar: string } = {
         name: 'Ahmad',
         email: 'rifai@gmail.com',
@@ -267,7 +307,7 @@ export function SiteHeader() {
             <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
                 <SidebarTrigger className="-ml-1" />
                 <Separator orientation="vertical" className="mx-2 data-[orientation=vertical]:h-4" />
-                <h1 className="text-base font-medium">Documents</h1>
+                <h1 className="text-base font-medium">{title}</h1>
                 <div className="ml-auto flex items-center gap-2">
                     <ModeToggle />
                     <DropdownMenu>

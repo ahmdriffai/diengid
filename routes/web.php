@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\HomestayController;
+use App\Http\Controllers\Admin\HostProfileController;
+use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\GoogleSsoController;
 use App\Http\Controllers\UserController;
@@ -15,6 +17,22 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::prefix('homestays')->name('homestays.')->controller(HomestayController::class)->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
+    });
+
+    Route::prefix('properties')->name('properties.')->controller(PropertyController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::get('/{property}/edit', 'edit')->name('edit');
+        Route::post('/', 'store')->name('store');
+        Route::put('/{property}', 'update')->name('update');
+        Route::delete('/{property}', 'destroy')->name('destroy');
+    });
+
+    Route::prefix('host-profiles')->name('host-profiles.')->controller(HostProfileController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::put('/{hostProfile}', 'update')->name('update');
+        Route::delete('/{hostProfile}', 'destroy')->name('destroy');
     });
 });
 
@@ -41,6 +59,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/homestays/id', function () {
         return Inertia::render('client/homestay/detail');
     })->name('homestays.detail');
+
 });
 
 Route::middleware('auth')->group(function () {
